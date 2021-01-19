@@ -24,7 +24,7 @@ def get_greatest(number_list):
             >>> bm.get_greatest(number_list)
             99
     """
-    greatest_number = None
+    greatest_number = max(number_list)
     return greatest_number
 
 
@@ -45,7 +45,7 @@ def get_smallest(number_list):
             >>> bm.get_smallest(number_list)
             11
     """
-    smallest_number = None
+    smallest_number = min(number_list)
     return smallest_number
 
 
@@ -58,7 +58,7 @@ def get_mean(number_list):
             ex - [10, 33, 22, 99, 33]
 
         Returns:
-            mean (int): parameter number_list 숫자들의 평균
+            mean (float): parameter number_list 숫자들의 평균
 
         Examples:
             >>> number_list = [39, 54, 32, 11, 99]
@@ -66,7 +66,7 @@ def get_mean(number_list):
             >>> bm.get_mean(number_list)
             47
     """
-    mean = None
+    mean = sum(number_list) / len(number_list)
     return mean
 
 
@@ -90,5 +90,13 @@ def get_median(number_list):
             >>> bm.get_median(number_list2)
             35.5
     """
-    median = None
+    sorted_number_list = sorted(number_list) # list 정렬
+    len_number_list = len(number_list) # list 길이
+    
+    if len_number_list % 2 == 0:
+        # list 길이가 짝수일 때
+        median = get_mean(sorted_number_list[int(len_number_list / 2)-1 : int(len_number_list / 2)+1])
+    else:
+        # list 길이가 홀수일 때
+        median = sorted_number_list[int(len_number_list / 2)]
     return median
